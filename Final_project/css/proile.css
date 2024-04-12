@@ -1,0 +1,77 @@
+body {
+    background-color: #f4f3ef;
+}
+.sidebar {
+    background-color: #333;
+    color: #fff;
+    min-height: 100vh;
+}
+.profile-header {
+    background: url('path_to_header_background.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 120px 0 30px 0;
+}
+.user-info {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    margin-top: -5rem;
+}
+.settings {
+    padding: 1rem;
+    background: #fff;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+.projects {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+.project-item {
+    margin-bottom: 1rem;
+}
+.project-img {
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+.project-img:hover {
+    transform: scale(1.05);
+}
+
+.conversations img {
+    border-radius: 50%;
+}
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.btn-primary {
+    background-color: #007bff;
+}
+/* Layout styles for side-by-side panels */
+.info-panels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.info-panels > div {
+    flex-basis: calc(50% - 0.5rem);
+    flex-grow: 1;
+}
+.editable {
+    display: none;
+}
+.project-card {
+    position: relative;
+    margin-bottom: 15px;
+}
+.project-card .btn {
+    margin-right: 5px;
+}
+.edit-form {
+    display: none;
+}

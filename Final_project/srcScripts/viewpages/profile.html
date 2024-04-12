@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f3ef;
+        }
+        .sidebar {
+            background-color: #333;
+            color: #fff;
+            min-height: 100vh;
+        }
+        .profile-header {
+            background: url('path_to_header_background.jpg') no-repeat center center;
+            background-size: cover;
+        }
+        .user-info {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin-top: -5rem;
+        }
+        .settings {
+            padding: 1rem;
+            background: #fff;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        .projects {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .project-item {
+            margin-bottom: 1rem;
+        }
+        .project-img {
+            width: 100%;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        .project-img:hover {
+            transform: scale(1.05);
+        }
+        
+   
+        .conversations img {
+            border-radius: 50%;
+        }
+        .profile-img {
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+       
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar navigation -->
+        <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
+            <!-- Sidebar content -->
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="fas fa-home"></i>
+                        Dashboard <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <!-- Add more items here -->
+            </ul>
+        </nav>
+
+        <!-- Main content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <!-- Profile header -->
+            <div class="profile-header d-flex align-items-end" style="min-height: 250px; background-image: url('../images/profile.png');">
+                <!-- Header content could go here -->
+            </div>
+
+            <!-- User info -->
+            <div class="card user-info mt-n5 shadow">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2 text-center">
+                            <img src="your-profile-picture.jpg" class="profile-img" alt="Profile image">
+                        </div>
+                        <div class="col-md">
+                            <h5>Richard Davis</h5>
+                            <p>CEO / Co-Founder</p>
+                        </div>
+                        <div class="col-md-5">
+                            <button class="btn btn-primary">Follow</button>
+                            <button class="btn btn-outline-primary">Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Platform settings -->
+            <div class="settings mt-3">
+                <h5>Platform Settings</h5>
+                <!-- Settings content -->
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">Email me when someone follows me</label>
+                </div>
+                <!-- Add more switches here -->
+            </div>
+
+            <!-- Profile information -->
+            <div class="user-info mt-3">
+                <h5>Profile Information</h5>
+                <p>Hi, I'm Alec Thompson, Decisions: if you can't decide, the answer is no...</p>
+                <!-- Add more profile information here -->
+            </div>
+
+            <!-- Conversations -->
+            <div class="conversations mt-3">
+                <h5>Conversations</h5>
+                <!-- Conversations content -->
+                <div class="media">
+                    <img class="mr-3 profile-img" src="conversation-partner-image.jpg" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0">Sophie B.</h5>
+                        Hi I need more information...
+                    </div>
+                </div>
+                <!-- Add more conversation entries here -->
+            </div>
+
+            <!-- Projects gallery -->
+            <div class="projects my-3">
+                <h5>Projects</h5>
+                <div class="row">
+                    <!-- Repeat for each project -->
+                    <div class="col-md-6 project-item">
+                        <img src="path_to_project_image.jpg" alt="Project" class="project-img img-fluid">
+                        <h6>Project #1</h6>
+                        <p>Modern</p>
+                    </div>
+                    <!-- ... -->
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.1.9/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
