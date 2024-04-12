@@ -11,7 +11,7 @@ include 'connection.php';
 //     exit;
 // }
 
-$userId = $SESSION['user_id'];
+$userId = 1;
 
 $sql = "SELECT SUM(TIME_TO_SEC(TIMEDIFF(event_end_time, event_time)) / 3600) AS total_hours
         FROM CalendarEvents

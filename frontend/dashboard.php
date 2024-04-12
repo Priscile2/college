@@ -207,94 +207,34 @@
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col-lg-4 col-md-6 mt-4 mb-4">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+        <div class="container-fluid py-4">
+          <div class="row">
+            <div class="col-12">
+              <h6>Your Engagements</h6>
+              <div class="card mb-4">
+                <div class="card-body px-0 pt-0 pb-2">
+                  <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                        <tr>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Enagement name</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Enagement type</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tableBody">
+                        
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card-body">
-              <h6 class="mb-0 ">Weekly Engagements</h6>
-              <p class="text-sm ">Stay Disciplined</p>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> You can do this, and in time</p>
-              </div>
+          </div>
+        </div>
 
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mt-4 mb-4">
-          <div class="card z-index-2  ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h6 class="mb-0 "> Daily Sales </h6>
-              <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today sales. </p>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> updated 4 min ago </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mt-4 mb-3">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <canvas id="chart-line-tasks" class="chart-canvas" height="170"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h6 class="mb-0 ">Weekly Completed Tasks</h6>
-              <p class="text-sm ">You are getting there</p>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm">Stay Focused</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-      <div class="container-fluid py-4">
-        <div class="row">
-          <div class="col-12">
-            <h6>Your Engagements</h6>
-            <div class="card mb-4">
-              <div class="card-body px-0 pt-0 pb-2">
-                <div class="table-responsive p-0">
-                  <table class="table align-items-center mb-0">
-                    <thead>
-                      <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Enagement name</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Enagement type</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </main>
 
   <!--   Core JS Files   -->
@@ -310,56 +250,60 @@
   <script>
     // javascript for fetching opportunities
     document.addEventListener("DOMContentLoaded", function() {
-      fetchEnagements();
+      fetchEngagements();
     });
 
-    function fetchEnagements() {
-      fetch('http://localhost/finalProjectfrontend/backend/opp_api.php?action=list')
-        .then(response => response.json())
-        .then(data => {
-          displayEnagagements(data);
+    function fetchEngagements() {
+      fetch('http://localhost/finalProjectfrontend/backend/fetchingEngagement.php')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok')
+          }
+          return response.json();
         })
-        .catch(error => console.error('Error fetching engagements:', error));
+        .then(data => {
+          displayEngagements(data);
+        })
+        .catch(error => {
+          console.error('Error fetching engagements:', error);
+          document.getElementById('tableBody').innerHTML = `<tr><td colspan="4">Failed to fetch data. Please try again later.</td></tr>`; // Show error directly in table
+        });
     }
 
-    function displayEnagagements(engagements) {
-      const tableBody = document.querySelector('table.table tbody');
+    function displayEngagements(engagements) {
+      const tableBody = document.getElementById('tableBody'); // Prefer using ID for specific targeting
       tableBody.innerHTML = ''; // Clear existing rows
+
+      if (engagements.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="4" class="text-center">No engagements found.</td></tr>';
+        return;
+      }
 
       engagements.forEach(engagement => {
         const row = `
-              <tr>
-                  <td>
-                      <div class="d-flex px-2 py-1">
-                          <div>
-                              <img src="../images/engagement.png" class="avatar avatar-sm me-3" alt="user image">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">${Engagements.engagement_name}</h6>
-                              <p class="text-xs text-secondary mb-0">${opportunity.office}</p>
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                          <div class="d-flex flex-column justify-content-center">
-                              
-                              <p class="text-xs text-secondary mb-0">${Engagements.engagement_type}</p>
-                          </div>
-                  </td>
-                  <td class="text-xs text-secondary mb-0">${opportunity.location}</td>
-                  <td class="text-xs text-secondary mb-0">${opportunity.deadline}</td>
-                  <td class="align-middle text-center">
-                      <a href="javascript:;" class="text-pink font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#opportunityModal" style="color: #e91e63;">View</a>
-                      
-                      <button class="btn btn-primary btn-sm" onclick="pursueOpportunity(${opportunity.opportunity_id})">Pursue</button>
-                  </td>
-              </tr>
-              
-          `;
-        tableBody.innerHTML += row;
+            <tr>
+                <td>
+                    <div class="d-flex px-2 py-1">
+                        <div>
+                            <img src="../images/Ashesi.png" class="avatar avatar-sm me-3" alt="user image">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">${engagement.engagement_name}</h6>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="text-xs text-secondary mb-0">${engagement.engagement_type}</p>
+                    </div>
+                </td>
+                <td class="text-xs text-secondary mb-0">${engagement.location || 'N/A'}</td>
+                <td class="text-xs text-secondary mb-0">${engagement.deadline}</td>
+            </tr>
+        `;
+        tableBody.innerHTML += row; // Append new row
       });
     }
-
 
     //counting Calendar Events
     document.addEventListener('DOMContentLoaded', function() {
@@ -446,139 +390,30 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-  fetchHoursAtEvent();
-});
-
-function fetchHoursAtEvent() {
-  const apiUrl = 'http://localhost/finalProjectfrontend/backend/hoursAtEvent.php';
-  fetch(apiUrl)
-    .then(response => response.json())  // Convert the response to JSON
-    .then(data => {
-      if (data.error) {
-        console.error('Error:', data.error);
-        document.getElementById('hoursCount').innerText = "Error fetching hours";
-      } else {
-        console.log('Total hours spent:', data.total_hours);
-        document.getElementById('hoursCount').innerText = data.total_hours;
-      }
-    })
-    .catch(error => {
-      console.error('Failed to fetch hours:', error);
-      document.getElementById('hoursCount').innerText = "Failed to fetch hours";
-    });
-}
-
-
-    //Events per week.
-
-    document.addEventListener('DOMContentLoaded', function() {
-      fetchWeeklyEventData();
+      fetchHoursAtEvent();
     });
 
-    // Function to fetch weekly event data and update the chart
-    function fetchWeeklyEventData() {
-      const apiUrl = 'http://localhost/finalProjectfrontend/backend/weeklyEvents.php'; // Update this to your actual API URL
-
+    function fetchHoursAtEvent() {
+      const apiUrl = 'http://localhost/finalProjectfrontend/backend/hoursAtEvent.php';
       fetch(apiUrl)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
+        .then(response => response.json()) // Convert the response to JSON
         .then(data => {
-          // Assuming the data is in the format [{day: 'M', count: 10}, {day: 'T', count: 20}, ...]
-          const labels = data.map(entry => entry.day);
-          const counts = data.map(entry => entry.count);
-          generateDailyEventsChart(labels, counts);
+          if (data.error) {
+            console.error('Error:', data.error);
+            document.getElementById('hoursCount').innerText = "Error fetching hours";
+          } else {
+            console.log('Total hours spent:', data.total_hours);
+            document.getElementById('hoursCount').innerText = data.total_hours;
+          }
         })
         .catch(error => {
-          console.error('Error fetching weekly event data:', error);
+          console.error('Failed to fetch hours:', error);
+          document.getElementById('hoursCount').innerText = "Failed to fetch hours";
         });
     }
 
-    // Function to generate the daily events chart
-    function generateDailyEventsChart(labels, data) {
-      var ctx = document.getElementById("chart-bars").getContext("2d");
 
-      new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: labels, // Labels for the days of the week
-          datasets: [{
-            label: "Events",
-            tension: 0.4,
-            borderWidth: 0,
-            borderRadius: 4,
-            borderSkipped: false,
-            backgroundColor: "rgba(75,192,192,1)",
-            data: data, // Event counts for each day
-            maxBarThickness: 6
-          }],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: true,
-            }
-          },
-          interaction: {
-            intersect: false,
-            mode: 'index',
-          },
-          scales: {
-            y: {
-              grid: {
-                drawBorder: false,
-                display: true,
-                drawOnChartArea: true,
-                drawTicks: false,
-                borderDash: [5, 5],
-                color: 'rgba(255, 255, 255, .2)'
-              },
-              ticks: {
-                suggestedMin: 0,
-                suggestedMax: Math.max(...data) + 1, // Adjust the max value based on the data
-                beginAtZero: true,
-                padding: 10,
-                font: {
-                  size: 14,
-                  weight: 300,
-                  family: "Roboto",
-                  style: 'normal',
-                  lineHeight: 2
-                },
-                color: "#fff"
-              },
-            },
-            x: {
-              grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-                borderDash: [5, 5],
-                color: 'rgba(255, 255, 255, .2)'
-              },
-              ticks: {
-                display: true,
-                color: '#f8f9fa',
-                padding: 10,
-                font: {
-                  size: 14,
-                  weight: 300,
-                  family: "Roboto",
-                  style: 'normal',
-                  lineHeight: 2
-                },
-              }
-            },
-          },
-        },
-      });
-    }
+
   </script>
   </script>
 
