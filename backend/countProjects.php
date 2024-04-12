@@ -2,7 +2,7 @@
 // Include your database connection file
 include 'connection.php';
 
-$user_id= $_SESSION['user_id'];
+$user_id= 1;
 // SQL query to count the number of projects
 $sql = "SELECT COUNT(*) AS project_count FROM projects where user_id=$user_id";
 

@@ -2,7 +2,7 @@
 include 'connection.php';
 
 // Assuming you have a way to get the authenticated student's ID
-$opportunity_id =1 ?? null;
+$opportunity_id =$_GET['opportunityId'] ?? null;
 $action = $_GET['action'] ?? null;
 
 

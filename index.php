@@ -6,15 +6,15 @@
     <title>College Engagement Tracker</title>
     <!-- Fonts and icons -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
-    <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+    <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
     <style>
         body {
-            background: url('../images/pic1.jpg') no-repeat center center fixed; 
+            background: url('images/pic1.jpg') no-repeat center center fixed; 
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -47,8 +47,8 @@
                             </div>
                             <div class="col-md-6 my-2">
                                 <h5>Get Started:</h5>
-                                <a href="sign-in.php" class="btn btn-primary w-100 my-3">Sign In</a>
-                                <a href="sign-up.php" class="btn btn-secondary w-100">Sign Up</a>
+                                <a href="frontend/sign-in.php" class="btn btn-primary w-100 my-3">Sign In</a>
+                                <a href="frontend/sign-up.php" class="btn btn-secondary w-100">Sign Up</a>
                             </div>
                         </div>
                     </div>

@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$userId = $_SESSION['user_id'];  // Retrieve user ID from session
+$userId = 1;
 
 
 $eventName = $_POST['eventTitle'] ?? null;
