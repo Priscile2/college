@@ -8,7 +8,7 @@ $sql = "SELECT e.engagement_id, e.user_id, e.engagement_name, e.engagement_type,
                e.date, o.office
         FROM Engagements e
         LEFT JOIN Opportunities o ON e.opportunity_id = o.opportunity_id
-        ORDER BY e.date DESC";  // Sorting by date descending to show recent engagements first
+        ORDER BY e.date ASC";  // Sorting by date descending to show recent engagements first
 
 $result = $conn->query($sql);
 
