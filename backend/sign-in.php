@@ -27,6 +27,7 @@ if ($stmt->num_rows > 0) {
         exit();
     } else {
         // Password is incorrect
+        echo "Invalid credential";
         header("Location: ../frontend/sign-in.php?error=invalid_credentials");
         exit();
     }

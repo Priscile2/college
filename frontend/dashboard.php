@@ -1,7 +1,6 @@
 <?php
 session_start();
 $student_id= $_SESSION['student_id'] ;
- var_dump($student_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
