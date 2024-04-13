@@ -192,7 +192,7 @@ $student_id= $_SESSION['student_id'] ;
   });
 
   function fetchOpportunities() {
-    fetch('http://localhost/finalProjectfrontend/backend/opp_api.php?action=list')
+    fetch('../backend/opp_api.php?action=list')
       .then(response => response.json())
       .then(data => {
         displayOpportunities(data);
@@ -244,7 +244,7 @@ $student_id= $_SESSION['student_id'] ;
   const action = 'pursue';
 
   // Your backend endpoint URL
-  const url = `http://localhost/finalProjectfrontend/backend/opp_api.php?action=${action}&opportunity_id=${opportunityId}`;
+  const url = `../backend/opp_api.php?action=${action}&opportunity_id=${opportunityId}`;
 
   // Data to be sent to the server
   const data = {

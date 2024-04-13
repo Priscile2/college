@@ -177,7 +177,7 @@ $student_id = $_SESSION['student_id'];
     formData.append("name", name);
     formData.append("desc", desc);
 
-    fetch('http://localhost/finalProjectfrontend/backend/pro.php', {
+    fetch('../backend/pro.php', {
         method: 'POST',
         body: formData
       })
@@ -209,7 +209,7 @@ $student_id = $_SESSION['student_id'];
   }
   //Function for Retriving projects from the database
   function fetchProjects() {
-    fetch('http://localhost/finalProjectfrontend/backend/fetchingprojects.php')
+    fetch('../backend/fetchingprojects.php')
       .then(response => response.json())
       .then(data => {
         data.forEach(project => {
@@ -236,7 +236,7 @@ $student_id = $_SESSION['student_id'];
 
         const projectId = e.target.getAttribute('data-project-id');
         // Correctly use template literals to include the project ID in the URL
-        const apiEndpoint = `http://localhost/finalProjectfrontend/backend/deletingprojects.php?project_id=${projectId}`;
+        const apiEndpoint = `../backend/deletingprojects.php?project_id=${projectId}`;
 
         try {
           const response = await fetch(apiEndpoint, {
@@ -270,7 +270,7 @@ $student_id = $_SESSION['student_id'];
           formData.append("desc", projectDesc);
 
 
-          const apiEndpoint = `http://localhost/finalProjectfrontend/backend/editingprojects.php?project_id=${projectId},name=${projectName},desc=${projectDesc}`;
+          const apiEndpoint = `../backend/editingprojects.php?project_id=${projectId},name=${projectName},desc=${projectDesc}`;
 
           try {
 

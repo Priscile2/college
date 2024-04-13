@@ -252,7 +252,7 @@ $student_id= $_SESSION['student_id'] ;
         event.preventDefault(); // Prevent the default form submission
 
         // URL of the server-side script that will handle the form data and update the database
-        const apiUrl = 'http://localhost/finalProjectfrontend/backend/addingevent.php';
+        const apiUrl = '../backend/addingevent.php';
 
         // Use FormData to easily extract form data
         const formData = new FormData(addEventForm);
@@ -290,7 +290,7 @@ $student_id= $_SESSION['student_id'] ;
 
     function fetchEvents() {
       // URL of the API endpoint
-      const apiUrl = 'http://localhost/finalProjectfrontend/backend/fetchingEvents.php';
+      const apiUrl = '../backend/fetchingEvents.php';
 
       fetch(apiUrl)
         .then(response => {
@@ -373,7 +373,7 @@ $student_id= $_SESSION['student_id'] ;
       if (!confirm("Are you sure you want to delete this event?")) return;
 
       // Assuming the API URL to delete an event by ID
-      const apiUrl = `http://localhost/finalProjectfrontend/backend/deletingEvent.php?event_id=${eventId}`;
+      const apiUrl = `../backend/deletingEvent.php?event_id=${eventId}`;
 
       fetch(apiUrl, {
           method: 'POST'

@@ -250,7 +250,7 @@ $student_id = $_SESSION['student_id'];
     });
 
     function fetchEngagements() {
-      fetch('http://localhost/finalProjectfrontend/backend/fetchingEngagement.php')
+      fetch('../backend/fetchingEngagement.php')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -310,7 +310,7 @@ $student_id = $_SESSION['student_id'];
 
     function fetchEventCount() {
       // The URL to your endpoint that returns the count of events
-      const apiUrl = 'http://localhost/finalProjectfrontend/backend/countEvents.php';
+      const apiUrl = '../backend/countEvents.php';
 
       fetch(apiUrl)
         .then(response => {
@@ -339,7 +339,7 @@ $student_id = $_SESSION['student_id'];
 
     function fetchProjectCount() {
       // The URL to your endpoint that returns the count of events
-      const apiUrl = 'http://localhost/finalProjectfrontend/backend/countProjects.php';
+      const apiUrl = '../backend/countProjects.php';
 
       fetch(apiUrl)
         .then(response => {
@@ -366,7 +366,7 @@ $student_id = $_SESSION['student_id'];
 
     function fetchEngagementCount() {
       // The URL to your endpoint that returns the count of events
-      const apiUrl = 'http://localhost/finalProjectfrontend/backend/countEngagements.php';
+      const apiUrl = '../backend/countEngagements.php';
 
       fetch(apiUrl)
         .then(response => {
@@ -392,7 +392,7 @@ $student_id = $_SESSION['student_id'];
     });
 
     function fetchHoursAtEvent() {
-      const apiUrl = 'http://localhost/finalProjectfrontend/backend/hoursAtEvent.php';
+      const apiUrl = '../backend/hoursAtEvent.php';
       fetch(apiUrl)
         .then(response => response.json()) // Convert the response to JSON
         .then(data => {
