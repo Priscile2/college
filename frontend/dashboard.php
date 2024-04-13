@@ -334,31 +334,40 @@ $student_id = $_SESSION['student_id'];
 
     //counting Calendar Events
     document.addEventListener('DOMContentLoaded', function() {
-      fetchProjectCount();
+  fetchProjectCount();
+});
+
+function fetchProjectCount() {
+  // The URL to your endpoint that returns the count of projects
+  const apiUrl = '../backend/countProjects.php';
+
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Assuming the server responds with JSON
+    })
+    .then(data => {
+      // Assuming the server responds with an object that has a project_count property
+      console.log('Number of projects:', data.project_count);
+      // Directly update the innerText of the element with ID "projectCount"
+      const projectCountElement = document.getElementById('projectCount');
+      if (projectCountElement) {
+        projectCountElement.innerText = data.project_count;
+      } else {
+        console.error('Element with ID "projectCount" not found.');
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching project count:', error);
+      const projectCountElement = document.getElementById('projectCount');
+      if (projectCountElement) {
+        projectCountElement.innerText = 'Error';
+      }
     });
+}
 
-    function fetchProjectCount() {
-      // The URL to your endpoint that returns the count of events
-      const apiUrl = '../backend/countProjects.php';
-
-      fetch(apiUrl)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json(); // Assuming the server responds with JSON
-        })
-        .then(data => {
-          // Assuming the server responds with an object that has an event_count property
-          console.log('Number of projects:', data.project_count);
-          // Directly update the innerText of the element with ID "eventCount"
-          document.getElementById('projectCount').innerText = data.project_count;
-        })
-        .catch(error => {
-          console.error('Error fetching event count:', error);
-
-        });
-    }
     // Counting Engagements
     document.addEventListener('DOMContentLoaded', function() {
       fetchEngagementCount();
