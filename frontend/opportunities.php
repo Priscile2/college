@@ -1,3 +1,7 @@
+<?php
+session_start();  // Start the session at the very beginning
+$student_id= $_SESSION['student_id'] ;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -237,16 +241,14 @@
   }
   function pursueOpportunity(opportunityId) {
   // Assuming you have a way to identify the current user's ID
-  const userId = 1; // Example user ID, replace with actual logic to retrieve current user's ID
   const action = 'pursue';
 
   // Your backend endpoint URL
-  const url = `http://localhost/finalProjectfrontend/backend/opp_api.php?action=${action}&user_id=${userId}&opportunity_id=${opportunityId}`;
+  const url = `http://localhost/finalProjectfrontend/backend/opp_api.php?action=${action}&opportunity_id=${opportunityId}`;
 
   // Data to be sent to the server
   const data = {
     action: action,
-    user_id: userId,
     opportunity_id: opportunityId
   };
 

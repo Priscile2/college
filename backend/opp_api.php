@@ -1,12 +1,14 @@
 <?php
+session_start();  // Start the session at the very beginning
 include 'connection.php';
+$student_id= $_SESSION['student_id'] ;
 
 // Assuming you have a way to get the authenticated student's ID
 $opportunity_id =$_GET['opportunityId'] ?? null;
 $action = $_GET['action'] ?? null;
 
 
-$user_id = 1; // Assuming a default user ID for testing purposes
+$user_id = $student_id; // Assuming a default user ID for testing purposes
 
 switch ($action) {
     case 'list':
@@ -39,11 +41,11 @@ function listOpportunities($conn)
 
 function pursueOpportunity($conn, $opportunity_id, $user_id)
 {
-    // Check if the opportunity has already been pursued by the user
-    // if (isOpportunityAlreadyPursued($conn, $opportunity_id, $user_id)) {
-    //     echo json_encode(['error' => 'You have already pursued this opportunity.']);
-    //     return;
-    // }
+    //Check if the opportunity has already been pursued by the user
+    if (isOpportunityAlreadyPursued($conn, $opportunity_id, $user_id)) {
+        echo json_encode(['error' => 'You have already pursued this opportunity.']);
+        return;
+    }
 
     // Fetch details of the opportunity
     $opportunityDetails = fetchOpportunityDetails($conn, $opportunity_id);
