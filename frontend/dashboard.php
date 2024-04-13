@@ -250,7 +250,7 @@ $student_id = $_SESSION['student_id'];
     });
 
     function fetchEngagements() {
-      fetch('http://localhost/finalProjectfrontend/backend/fetchingEngagement.php')
+      fetch('http://localhost/finalProjectfrontend/backend/engagement.php')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
