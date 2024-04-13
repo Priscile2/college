@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check Passwords Match
     if ($password !== $confirmPassword) {
-        die('Password mismatch.');
+        echo "Invalid password";
     }
 
     // Hash the password

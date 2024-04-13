@@ -129,40 +129,7 @@
     }
   </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Fetch the form we want to apply custom Bootstrap validation styles to
-    var form = document.getElementById('signup-form');
 
-    // Loop over them and prevent submission if validation fails
-    form.addEventListener('submit', function(event) {
-      var email = document.getElementById('inputEmail').value;
-      var phone = document.getElementById('inputTelephone').value;
-      var firstName = document.getElementById('inputFirstName').value;
-      var lastName = document.getElementById('inputLastName').value;
-      
-      // Check if email ends with @ashesi.edu.gh
-      if (!email.endsWith('@ashesi.edu.gh')) {
-        alert('Email must end with @ashesi.edu.gh');
-        event.preventDefault(); // Prevent form submission
-      }
-
-      // Check if phone contains only numbers and is 10 digits long
-      var phoneRegex = /^[0-9]{1,10}$/;
-      if (!phoneRegex.test(phone)) {
-        alert('Telephone must contain only numbers and be no more than 10 digits long.');
-        event.preventDefault(); // Prevent form submission
-      }
-
-      // Check if names contain numbers
-      var nameRegex = /^[A-Za-z\s]+$/;
-      if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
-        alert('Names must not contain numbers.');
-        event.preventDefault(); // Prevent form submission
-      }
-    }, false);
-  });
-</script>
 </body>
 
 
