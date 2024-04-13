@@ -1,6 +1,6 @@
 <?php
 session_start();
-$student_id= $_SESSION['student_id'] ;
+$student_id = $_SESSION['student_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -220,7 +220,7 @@ $student_id= $_SESSION['student_id'] ;
                         </tr>
                       </thead>
                       <tbody id="tableBody">
-                        
+
                       </tbody>
                     </table>
                   </div>
@@ -253,7 +253,7 @@ $student_id= $_SESSION['student_id'] ;
       fetch('http://localhost/finalProjectfrontend/backend/fetchingEngagement.php')
         .then(response => {
           if (!response.ok) {
-            throw new Error('Network response was not ok')
+            throw new Error('Network response was not ok');
           }
           return response.json();
         })
@@ -262,7 +262,8 @@ $student_id= $_SESSION['student_id'] ;
         })
         .catch(error => {
           console.error('Error fetching engagements:', error);
-          document.getElementById('tableBody').innerHTML = `<tr><td colspan="4">Failed to fetch data. Please try again later.</td></tr>`; // Show error directly in table
+          // Fix here: Set an error message within the table
+          document.getElementById('tableBody').innerHTML = '<tr><td colspan="4" class="text-center">Error loading engagements.</td></tr>';
         });
     }
 
@@ -277,29 +278,30 @@ $student_id= $_SESSION['student_id'] ;
 
       engagements.forEach(engagement => {
         const row = `
-            <tr>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="../images/Ashesi.png" class="avatar avatar-sm me-3" alt="user image">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">${engagement.engagement_name}</h6>
-                        </div>
+        <tr>
+            <td>
+                <div class="d-flex px-2 py-1">
+                    <div>
+                        <img src="../images/Ashesi.png" class="avatar avatar-sm me-3" alt="user image">
                     </div>
-                </td>
-                <td>
                     <div class="d-flex flex-column justify-content-center">
-                        <p class="text-xs text-secondary mb-0">${engagement.engagement_type}</p>
+                        <h6 class="mb-0 text-sm">${engagement.engagement_name}</h6>
                     </div>
-                </td>
-                <td class="text-xs text-secondary mb-0">${engagement.location || 'N/A'}</td>
-                <td class="text-xs text-secondary mb-0">${engagement.deadline}</td>
-            </tr>
-        `;
+                </div>
+            </td>
+            <td>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="text-xs text-secondary mb-0">${engagement.engagement_type}</p>
+                </div>
+            </td>
+            <td class="text-xs text-secondary mb-0">${engagement.location || 'N/A'}</td>
+            <td class="text-xs text-secondary mb-0">${engagement.deadline}</td>
+        </tr>
+    `;
         tableBody.innerHTML += row; // Append new row
       });
     }
+
 
     //counting Calendar Events
     document.addEventListener('DOMContentLoaded', function() {
@@ -407,9 +409,6 @@ $student_id= $_SESSION['student_id'] ;
           document.getElementById('hoursCount').innerText = "Failed to fetch hours";
         });
     }
-
-
-
   </script>
   </script>
 

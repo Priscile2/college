@@ -270,4 +270,4 @@ $student_id= $_SESSION['student_id'] ;
 </script>
 
 
-</html>http://localhost/finalProjectfrontend/backend/opp_api.php?action=pursue&user_id=1&opportunity_id=1
+</html>
