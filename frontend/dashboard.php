@@ -145,7 +145,7 @@ $student_id = $_SESSION['student_id'];
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">20 </span>hours weekly</p>
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span>hours weekly</p>
             </div>
           </div>
         </div>
@@ -157,7 +157,7 @@ $student_id = $_SESSION['student_id'];
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Total Projects</p>
-                <h4 class="mb-0" id="projectCount">10 </h4>
+                <h4 class="mb-0" id="projectCount"> </h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -174,7 +174,7 @@ $student_id = $_SESSION['student_id'];
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Total Engagements</p>
-                <h4 class="mb-0" id="engagementCount">4</h4>
+                <h4 class="mb-0" id="engagementCount"></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -192,7 +192,7 @@ $student_id = $_SESSION['student_id'];
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Total hours at events </p>
-                <h4 class="mb-0" id="hoursCount">6</h4>
+                <h4 class="mb-0" id="hoursCount"></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
