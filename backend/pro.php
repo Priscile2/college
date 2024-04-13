@@ -1,13 +1,13 @@
 <?php
+session_start();  // Start the session at the very beginning
 include 'connection.php';
-// Receive POST data
-
-$user_id=1;
+$student_id= $_SESSION['student_id'] ;
+var_dump($student_id);
 $projectName = $_POST['name'];
 $projectDesc = $_POST['desc'];
 // Prepare and bind
 $stmt = $conn->prepare("INSERT INTO projects (user_id,project_name, project_description) VALUES (?, ?, ?)");
-$stmt->bind_param("iss",$user_id, $projectName, $projectDesc);
+$stmt->bind_param("iss",$student_id, $projectName, $projectDesc);
 
 // Execute and respond
 if ($stmt->execute()) {

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include 'connection.php';
 
 // Read the input stream for PUT request data

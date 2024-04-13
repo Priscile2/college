@@ -1,3 +1,8 @@
+<?php
+session_start();
+$student_id= $_SESSION['student_id'] ;
+ var_dump($student_id);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,14 +32,6 @@
 
 <body class="g-sidenav-show  bg-gray-200">
 
-  <?php
-  session_start();
-
-  if (!isset($_SESSION['user_id'])) {
-    header('Location: ../frontend/sign-in.php');
-    exit();
-  }
-  ?>
 
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
 

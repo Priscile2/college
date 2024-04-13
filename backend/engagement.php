@@ -1,12 +1,13 @@
 <?php
+session_start();
 include 'connection.php';  // Make sure your connection settings are correct
 
-$user_id = 1;  // Assuming user_id is set to 1 for this example
+$student_id= $_SESSION['student_id'] ;
 
 
 $query = "SELECT * FROM CalendarEvents WHERE user_id = ? AND event_date >= CURDATE()";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("i", $user_id);
+$stmt->bind_param("i", $student_id);
 $stmt->execute();
 $result = $stmt->get_result();
 

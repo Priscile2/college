@@ -169,7 +169,6 @@
   function addProject2(name, desc, imgSrc) {
 
     const formData = new FormData();
-    formData.append("user_id", 1);
     formData.append("name", name);
     formData.append("desc", desc);
 

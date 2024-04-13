@@ -1,17 +1,17 @@
 <?php
 session_start();  // Start the session at the very beginning
-
 include 'connection.php';
+$student_id= $_SESSION['student_id'] ;
+var_dump($student_id);
 
 // Check if the user is logged in and a user ID is stored in the session
-if (!isset($_SESSION['user_id'])) {
+if (!isset($student_id)) {
     // User not logged in, redirect to login page or handle accordingly
     http_response_code(403); // Forbidden
     echo json_encode(['error' => 'Not authenticated. Please log in.']);
     exit;
 }
 
-$userId = 1;
 
 
 $eventName = $_POST['eventTitle'] ?? null;
@@ -23,7 +23,7 @@ $description = $_POST['eventdesc'] ?? null;
 $location = $_POST['eventlocation'] ?? null;
 
 $stmt = $conn->prepare("INSERT INTO CalendarEvents (user_id, event_name, event_date, event_type, description, event_time, event_end_time, location) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("isssssss", $userId, $eventName, $eventDate, $eventType, $description, $eventTime, $endTime, $location);
+$stmt->bind_param("isssssss", $student_id, $eventName, $eventDate, $eventType, $description, $eventTime, $endTime, $location);
 
 if ($stmt->execute()) {
     header('Content-Type: application/json');

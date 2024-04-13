@@ -1,9 +1,11 @@
 <?php
 // Include your database connection script
 include 'connection.php';
-
+session_start();  // Start the session at the very beginning
+$student_id= $_SESSION['student_id'] ;
+//var_dump($student_id);
 // SQL query to select all events from the calendarEvents table
-$query = "SELECT * FROM calendarEvents ORDER BY event_date ASC, event_time ASC";
+$query = "SELECT * FROM calendarEvents where user_id= $student_id ORDER BY event_date ASC, event_time ASC";
 
 // Execute the query
 $result = $conn->query($query);

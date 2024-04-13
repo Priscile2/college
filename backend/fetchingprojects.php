@@ -1,10 +1,12 @@
 <?php
+session_start();
 include 'connection.php';
 
+$student_id =$_SESSION['student_id'];
 
 
 
-$result = $conn->query("SELECT * FROM projects where user_id =1");
+$result = $conn->query("SELECT * FROM projects where user_id =$student_id");
 
 $projects = [];
 

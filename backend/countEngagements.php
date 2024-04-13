@@ -1,10 +1,13 @@
 <?php
+session_start();  // Start the session at the very beginning
 // Include your database connection file
 include 'connection.php';
 
-$user_id= 1;
+
+$student_id= $_SESSION['student_id'] ;
+
 // SQL query to count the number of events
-$sql = "SELECT COUNT(*) AS engagement_count FROM Engagements where user_id=1";
+$sql = "SELECT COUNT(*) AS engagement_count FROM Engagements where user_id=$student_id";
 
 // Execute the query
 $result = $conn->query($sql);

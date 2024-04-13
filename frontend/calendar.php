@@ -1,3 +1,8 @@
+<?php
+session_start();  // Start the session at the very beginning
+$student_id= $_SESSION['student_id'] ;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

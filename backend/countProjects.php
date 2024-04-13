@@ -1,10 +1,12 @@
 <?php
+session_start();  // Start the session at the very beginning
 // Include your database connection file
 include 'connection.php';
 
-$user_id= 1;
+
+$student_id= $_SESSION['student_id'] ;
 // SQL query to count the number of projects
-$sql = "SELECT COUNT(*) AS project_count FROM projects where user_id=$user_id";
+$sql = "SELECT COUNT(*) AS project_count FROM projects where user_id=$student_id";
 
 // Execute the query
 $result = $conn->query($sql);

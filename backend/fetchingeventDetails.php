@@ -1,4 +1,8 @@
 <?php
+session_start();
+$student_id= $_SESSION['student_id'] ;
+
+
 // Include database connection
 include 'connection.php';
 
